@@ -7,6 +7,7 @@ public class Market {
 	Item[] 물건 = new Item[5];
 	Scanner sc = new Scanner(System.in);
 	boolean 진행 = true;
+	int 마켓금고 = 0;
 	
 	public Market(String 마켓이름) {
 		this.마켓이름 = 마켓이름;
@@ -29,7 +30,28 @@ public class Market {
 		}
 		
 		int 구매번호 = sc.nextInt();
-		
+		if(구매번호 <= Item.물건명번호) {
+			Item 구매물건 = 물건[구매번호-1];
+			
+			System.out.printf("%s 몇개 살건데?", 구매물건.get물건명());
+			int 몇개 = sc.nextInt();
+			int 금액 = 구매물건.get가격() * 몇개;
+			if(금액 <= 손님.get돈()) {
+				int 새로운재고 = 구매물건.get재고() - 몇개;
+				구매물건.set재고(새로운재고);
+				Item 산물건 = new Item(구매물건.get물건명(), 구매물건.get가격(), 몇개);
+				Item.물건명번호--;
+				
+				손님.set장바구니(산물건);
+				
+			} else {
+				System.out.println("돈없으면 나가세요~");
+			}
+			
+			
+		}else {
+			System.out.println("물건명번호를 잘못 입력했습니다.");
+		}
 		
 	}
 	
