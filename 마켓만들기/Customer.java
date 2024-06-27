@@ -4,11 +4,13 @@ public class Customer {
 	String 이름;
 	int 돈;
 	Item[] 장바구니;
+	private int 물건개수;
 	
 	public Customer(String 이름, int 돈) {
 		this.이름 = 이름;
 		this.돈 = 돈;
 		this.장바구니 = new Item[2];
+		this.물건개수=0;
 	}
 	
 	
@@ -33,8 +35,9 @@ public class Customer {
 		return 장바구니;
 	}
 
-	public void set장바구니(Item[] 장바구니) {
-		this.장바구니 = 장바구니;
+	public void set장바구니(Item 장바구니) {
+		물건개수++;
+		this.장바구니[물건개수] = 장바구니;
 	}
 
 
